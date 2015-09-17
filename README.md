@@ -1,2 +1,2 @@
-# TableSelection.js
+# Table Selection
 ### Data driven Table Selection
