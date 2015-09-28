@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+
+<table id="table-selection">
+    <thead>
+    <tr>
+        <td>hey</td>
+        <td>hey</td>
+        <td>hey</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>hey</td>
+        <td>hey</td>
+        <td>hey</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script src="table-selection.js"></script>
+<script>
+
+    // grab element
+    var tableElement = document.querySelector('#table-selection');
+
+    // initialize table selection
+    var table = new tableSelection(tableElement, {
+        ctrlA: true, // enable ctrl+a select all - default: true
+        ctrlKey: true, // enable ctrlKey selection - default: true
+        shiftKey: true // enable shiftKey selection - default: true
+    });
+
+    // manually initialize component -> useful if you destroyed it
+    //table.init();
+
+    // manually destroy component
+    //table.destroy();
+
+    // manually select range of rows
+    // table.selectRows(5, 9);
+
+    // manually select single row
+    // table.selectRows(4);
+
+    // manually deselect range of rows
+    // table.deselectRows(5, 9);
+
+    // manually deselect single row
+    // table.deselectRows(4);
+
+    // manually toggle range of rows
+    // table.toggleRows(5, 9);
+
+    // manually toggle single row
+    // table.toggleRows(4);
+
+</script>
+</body>
+</html>
