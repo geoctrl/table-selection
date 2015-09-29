@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-
+    <link rel="stylesheet" href="table-selection.css">
 </head>
 <body>
 
@@ -19,46 +19,57 @@
         <td>hey</td>
         <td>hey</td>
     </tr>
+    <tr>
+        <td>hey</td>
+        <td>hey</td>
+        <td>hey</td>
+    </tr>
+    <tr>
+        <td>hey</td>
+        <td>hey</td>
+        <td>hey</td>
+    </tr>
     </tbody>
 </table>
-
+<div style="margin-top: 100px;">
+    <button onclick="deselectAll()">deselectAll</button>
+    <button onclick="selectAll()">selectAll</button>
+    <button onclick="getSelected()">getSelected</button>
+</div>
 
 <script src="table-selection.js"></script>
+<script src="lodash.min.js"></script>
 <script>
 
     // grab element
     var tableElement = document.querySelector('#table-selection');
 
+    // REQUIREMENTS
+    // if you're passing in a table, the table is required to have a <THEAD> tag (otherwise it'll allow the header to be selectable)
+    // if you have more than 1 <TBODY> it's recommended to control them separately by passing in the <TBODY> element itself
+    // calling the table as a whole will only pick up the first <TBODY>
+    // or if there's no <TBODY>, it'll grab all the rows it sees
+
     // initialize table selection
-    var table = new tableSelection(tableElement, {
-        ctrlA: true, // enable ctrl+a select all - default: true
-        ctrlKey: true, // enable ctrlKey selection - default: true
-        shiftKey: true // enable shiftKey selection - default: true
+    var table = new TableSelection(tableElement, {
+        ctrlA: true, // toggle ctrl+a select all - default: true
+        ctrlKey: true, // toggle ctrlKey selection - default: true
+        shiftKey: true, // toggle shiftKey selection - default: true
+        activeClass: 'active' // choose ROW class when active - default: 'active'
     });
 
-    // manually initialize component -> useful if you destroyed it
-    //table.init();
+    function deselectAll() {
+        table.deselectAll();
+    }
 
-    // manually destroy component
-    //table.destroy();
+    function selectAll() {
+        table.selectAll();
+    }
 
-    // manually select range of rows
-    // table.selectRows(5, 9);
+    function getSelected() {
+        table.getSelected();
+    }
 
-    // manually select single row
-    // table.selectRows(4);
-
-    // manually deselect range of rows
-    // table.deselectRows(5, 9);
-
-    // manually deselect single row
-    // table.deselectRows(4);
-
-    // manually toggle range of rows
-    // table.toggleRows(5, 9);
-
-    // manually toggle single row
-    // table.toggleRows(4);
 
 </script>
 </body>

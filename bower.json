@@ -1,0 +1,20 @@
+{
+  "name": "table-selection",
+  "version": "0.0.0",
+  "homepage": "https://github.com/geoctrl/table-selection",
+  "authors": [
+    "Tony <tonylefler@gmail.com>"
+  ],
+  "main": "dist/table-selection.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}

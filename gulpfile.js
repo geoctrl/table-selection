@@ -28,13 +28,18 @@ gulp.task('index', function() {
 });
 
 gulp.task('sass', function() {
-  return gulp.src('build/styles/table-selection.scss')
+  return gulp.src('build/table-selection.scss')
     .pipe(plumber())
     .pipe(sass())
     .pipe(autoprefixer({
       browsers: ['> 5%']
     }))
     .pipe(gulp.dest('dist'))
+});
+
+gulp.task('vendors', function() {
+  return gulp.src(['build/lib/lodash/lodash.min.js'])
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('connect', function () {
@@ -70,5 +75,6 @@ gulp.task('default', [
   'index',
   'js',
   'sass',
-  'watch'
+  'watch',
+  'vendors'
 ]);
