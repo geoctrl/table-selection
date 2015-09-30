@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="table-selection.css">
 </head>
 <body>
+<input type="text">
 
 <table id="table-selection">
     <thead>
@@ -32,9 +33,14 @@
     </tbody>
 </table>
 <div style="margin-top: 100px;">
-    <button onclick="deselectAll()">deselectAll</button>
-    <button onclick="selectAll()">selectAll</button>
-    <button onclick="getSelected()">getSelected</button>
+    <button onclick="deselectAll()">deselect All</button>
+    <button onclick="selectAll()">select All</button>
+    <button onclick="getSelected()">get Selected</button>
+    <button onclick="getUnselected()">get unselected</button>
+    <button onclick="selectRange()">select range</button>
+    <button onclick="deselectRange()">deselect range</button>
+    <button onclick="destroy()">destroy</button>
+    <button onclick="init()">init</button>
 </div>
 
 <script src="table-selection.js"></script>
@@ -53,9 +59,10 @@
     // initialize table selection
     var table = new TableSelection(tableElement, {
         ctrlA: true, // toggle ctrl+a select all - default: true
-        ctrlKey: true, // toggle ctrlKey selection - default: true
+        ctrlKey: true, // toggle ctrlKey selection - default: true // synonymous with the 'command' button on a mac
         shiftKey: true, // toggle shiftKey selection - default: true
-        activeClass: 'active' // choose ROW class when active - default: 'active'
+        activeClass: 'active', // choose row active class when active - default: 'active',
+        autoInit: true // toggle initializing component automatically - default: true
     });
 
     function deselectAll() {
@@ -67,7 +74,29 @@
     }
 
     function getSelected() {
-        table.getSelected();
+        var selectedRows = table.getSelected();
+        console.log(selectedRows);
+    }
+
+    function getUnselected() {
+        var unselectedRows = table.getUnselected();
+        console.log(unselectedRows);
+    }
+
+    function selectRange() {
+        table.selectRange(1, 2);
+    }
+
+    function deselectRange() {
+        table.deselectRange(1, 2);
+    }
+
+    function destroy() {
+        table.destroy();
+    }
+
+    function init() {
+        table.init();
     }
 
 
