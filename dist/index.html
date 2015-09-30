@@ -6,45 +6,103 @@
 <body>
 <input type="text">
 
-<table id="table-selection">
-    <thead>
-    <tr>
-        <td>hey</td>
-        <td>hey</td>
-        <td>hey</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>hey</td>
-        <td>hey</td>
-        <td>hey</td>
-    </tr>
-    <tr>
-        <td>hey</td>
-        <td>hey</td>
-        <td>hey</td>
-    </tr>
-    <tr>
-        <td>hey</td>
-        <td>hey</td>
-        <td>hey</td>
-    </tr>
-    </tbody>
-</table>
-<div style="margin-top: 100px;">
-    <button onclick="deselectAll()">deselect All</button>
-    <button onclick="selectAll()">select All</button>
-    <button onclick="getSelected()">get Selected</button>
-    <button onclick="getUnselected()">get unselected</button>
-    <button onclick="selectRange()">select range</button>
-    <button onclick="deselectRange()">deselect range</button>
-    <button onclick="destroy()">destroy</button>
-    <button onclick="init()">init</button>
+<!--<table id="table-selection">-->
+    <!--<thead>-->
+    <!--<tr>-->
+        <!--<td>hey</td>-->
+        <!--<td>hey</td>-->
+        <!--<td>hey</td>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr>-->
+        <!--<td>hey</td>-->
+        <!--<td>hey</td>-->
+        <!--<td>hey</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>hey</td>-->
+        <!--<td>hey</td>-->
+        <!--<td>hey</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>hey</td>-->
+        <!--<td>hey</td>-->
+        <!--<td>hey</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+<!--</table>-->
+<!--<div style="margin-top: 100px;">-->
+    <!--<button onclick="deselectAll()">deselect All</button>-->
+    <!--<button onclick="selectAll()">select All</button>-->
+    <!--<button onclick="getSelected()">get Selected</button>-->
+    <!--<button onclick="getUnselected()">get unselected</button>-->
+    <!--<button onclick="selectRange()">select range</button>-->
+    <!--<button onclick="deselectRange()">deselect range</button>-->
+    <!--<button onclick="destroy()">destroy</button>-->
+    <!--<button onclick="init()">init</button>-->
+<!--</div>-->
+
+<div ng-app="tableApp" ng-controller="tableCtrl">
+    <table id="table-selection">
+        <thead>
+        <tr>
+            <td>hey</td>
+            <td>hey</td>
+            <td>hey</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in table">
+            <td>{{row.data1}}</td>
+            <td>{{row.data2}}</td>
+            <td>{{row.data3}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <script src="table-selection.js"></script>
 <script src="lodash.min.js"></script>
+
+<script src="angular.min.js"></script>
+<script src="table-selection-angular.js"></script>
+
+<script>
+
+    var tableApp = angular.module('tableApp', ['tableSelection']);
+
+    tableApp.controller('tableCtrl', function($scope) {
+
+
+
+        $scope.table = [
+            {
+                data1: 'data11',
+                data2: 'data12',
+                data3: 'data13'
+            },
+            {
+                data1: 'data21',
+                data2: 'data22',
+                data3: 'data23'
+            },
+            {
+                data1: 'data31',
+                data2: 'data32',
+                data3: 'data33'
+            },
+            {
+                data1: 'data41',
+                data2: 'data42',
+                data3: 'data43'
+            }
+        ]
+
+    });
+
+</script>
+
 <script>
 
     // grab element
@@ -101,5 +159,7 @@
 
 
 </script>
+
+
 </body>
 </html>

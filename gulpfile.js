@@ -13,16 +13,16 @@ var gulp = require('gulp'),
 
 gulp.task('js', function() {
   return gulp.src([
-    'build/table-selection.js'
+    'build/table-selection.js',
+    'build/table-selection-angular.js'
   ])
-    .pipe(flatten())
     .pipe(plumber())
     .pipe(babel())
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('index', function() {
-  return gulp.src('build/index.html')
+  return gulp.src('build/**/*.html')
     .pipe(plumber())
     .pipe(gulp.dest('dist'))
 });
@@ -38,7 +38,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('vendors', function() {
-  return gulp.src(['build/lib/lodash/lodash.min.js'])
+  return gulp.src(['build/lib/lodash/lodash.min.js', 'build/lib/angular/angular.min.js'])
     .pipe(gulp.dest('dist'));
 });
 
@@ -56,7 +56,7 @@ gulp.task('reload', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('build/table-selection.js', function() {
+  gulp.watch('build/**/*.js', function() {
     runSequence(['js'], ['reload']);
   });
 
@@ -64,7 +64,7 @@ gulp.task('watch', function () {
     runSequence('sass', ['reload']);
   });
 
-  gulp.watch('build/index.html', function() {
+  gulp.watch('build/**/*.html', function() {
     runSequence('index', ['reload']);
   });
 
