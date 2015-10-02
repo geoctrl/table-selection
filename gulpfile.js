@@ -38,7 +38,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('vendors', function() {
-  return gulp.src(['build/lib/lodash/lodash.min.js', 'build/lib/angular/angular.min.js'])
+  return gulp.src(['build/lib/lodash/lodash.min.js', 'build/lib/angular/angular.js'])
     .pipe(gulp.dest('dist'));
 });
 
